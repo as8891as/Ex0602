@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
     Button btn;
     String button_text;
     int counter=0;
+    int numberCheck;
+    boolean sevenCheck=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,15 +25,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void pressed(View view) {
         counter++;
-        if (counter==6)
+        numberCheck=counter;
+        while ((numberCheck/10>0) || (numberCheck==7))
         {
-            button_text="Enough to click. Go to new start!";
-            counter=0;
+            if ((numberCheck%10==7) || (numberCheck%7==0))
+            {
+                sevenCheck=true;
+            }
+            numberCheck/=10;
+        }
+        if (sevenCheck)
+        {
+            button_text="BOOM !";
         }
         else
         {
             button_text="This is a click number: "+counter;
         }
+        sevenCheck=false;
         btn.setText(button_text);
     }
 }
