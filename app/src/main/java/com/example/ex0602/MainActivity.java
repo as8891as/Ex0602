@@ -23,7 +23,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void pressed(View view) {
         counter++;
-        button_text="This is a click number: "+counter;
+        if (counter==6)
+        {
+            button_text="Enough to click. Go to new start!";
+            counter=0;
+        }
+        else
+        {
+            button_text="This is a click number: "+counter;
+        }
         btn.setText(button_text);
     }
 }
